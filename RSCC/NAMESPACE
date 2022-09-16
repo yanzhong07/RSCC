@@ -1,0 +1,8 @@
+useDynLib(RSCC, .registration=TRUE)
+importFrom(Rcpp, evalCpp)
+import(RcppArmadillo)
+import(igraph)
+export(RSCC_gic)
+export(onedTVw_c)
+export(onedTV_c)
+export(buildKNN)

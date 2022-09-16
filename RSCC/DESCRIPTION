@@ -1,0 +1,17 @@
+Package: RSCC
+Type: Package
+Title: Restricted Spatially Varying Coefficient for Varying Selection
+        in Spatially Clustered Coefficient Model
+Version: 1.0
+Date: 2022-03-27
+Author: Yan Zhong
+Maintainer: Yan Zhong <yzhong@fem.ecnu.edu.cn>
+Description: This package provides a new regularized spatially varying coefficient (RSCC) model to achieve simultaneously variable selection and spatially clustering. The computing complexity of the model is nearly linear to the product of the number of samples and the number of variables in each iteration in practice. The method can also be applied to other varying coefficient models where observations can be related in a graph or a network, and the varying coefficient has piece-wise constant structure across the graph or the network.
+License: GPL-2 | GPL-3
+Imports: Rcpp (>= 1.0.2), RcppArmadillo (>= 0.9.700.2.0), igraph (>=
+        1.2.4.1)
+LinkingTo: Rcpp, RcppArmadillo, igraph
+RoxygenNote: 7.1.0
+NeedsCompilation: yes
+Depends: R (>= 3.5.0)
+Packaged: 2022-03-27 03:26:57 UTC; yanzhong
