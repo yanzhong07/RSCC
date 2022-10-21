@@ -9,7 +9,7 @@ library(Matrix)
 library(glmnet)
 source("example/Simulation_build.R")
 
-set.seed(123)
+set.seed(1233)
 n = 1000
 p = 20
 sim_data = simulation(n,p) # take about half a minute to generate data
@@ -37,7 +37,7 @@ RSCC_select_var = c(1:p)[colSums(model1$B !=0) !=0]
 true_var = c(1:p)[rowSums(Atrue) !=0]
 RSCC_select_var # variables selected by RSCC
 true_var # true related variables
-Bpre = round(model1$B, 2)
+
 
 dat = data.frame(loc1 = loc[,1], loc2 = loc[,2], 
                  b1t = Dtrue[,1], b2t = Dtrue[,2], b3t = Dtrue[,3],
@@ -47,24 +47,9 @@ cor(dat$b1t, dat$b1p)
 cor(dat$b2t, dat$b2p)
 cor(dat$b3t, dat$b3p)
 
-# true beta1
-p1t = ggplot(data = dat,aes(x = loc1,y = loc2)) + 
-  geom_point(aes(colour = b1t), size = 1.5) + 
-  scale_color_gradientn(colours = brewer.pal(3,"Spectral")) + 
-  xlab(NULL) + ylab(NULL)+ theme_linedraw()+
-  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
-        legend.position="right",legend.title = element_blank())+ ggtitle("beta1_true")
-p1t
+## A conventional SCC model can be built with the selected variables to further improve the estimated coefficient.
 
 
-p1p = ggplot(data = dat,aes(x = loc1,y = loc2)) + 
-  geom_point(aes(colour = b1p), size = 1.5) + 
-  scale_color_gradientn(colours = brewer.pal(3,"Spectral")) + 
-  xlab(NULL) + ylab(NULL)+ theme_linedraw()+
-  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
-        legend.position="right",legend.title = element_blank())+ ggtitle("beta1_predict")
-#geom_path(aes(x = path1, y = path2)) +
-p1p
 
 
 ## compared with glm
